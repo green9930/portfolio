@@ -6,20 +6,28 @@ import { Provider } from "react-redux";
 import App from "./App";
 import store from "./context/redux";
 import GlobalStyle from "./styles/GlobalStyle";
+import { ThemeProvider } from "styled-components";
+import { darkTheme } from "./styles/theme";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
+  // <React.StrictMode>
+  <ThemeProvider theme={darkTheme}>
+    <BrowserRouter
+      basename={
+        process.env.NODE_ENV === "production" ? process.env.PUBLIC_URL : ""
+      }
+    >
       <Provider store={store}>
         <GlobalStyle />
         <App />
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
+  </ThemeProvider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
