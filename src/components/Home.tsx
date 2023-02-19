@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { FaCopy } from "react-icons/fa";
+import { FaCopy, FaCheck } from "react-icons/fa";
 import { SiGmail, SiGithub, SiNotion } from "react-icons/si";
 import { SlNote } from "react-icons/sl";
 import { calcRem } from "../styles/theme";
 import Profile from "../assets/images/profile.jpg";
 import Swal from "sweetalert2";
 import ModalLayout from "./layout/ModalLayout";
+import Button from "./elements/Button";
+import Skills from "./Skills";
 
 const Home = () => {
   const [showEmailCopyModal, setShowEmailCopyModal] = useState(false);
@@ -49,10 +51,7 @@ const Home = () => {
               <StEmailItem>
                 <SiGmail />
                 <span>geuna0204@gmail.com</span>
-                <div onClick={() => handleCopy("geuna0204@gmail.com")}>
-                  <FaCopy />
-                  <span className="a11y-hidden">CLICK TO COPY</span>
-                </div>
+                <FaCopy onClick={() => handleCopy("geuna0204@gmail.com")} />
               </StEmailItem>
               <StContactItem
                 onClick={() => handleOpenUrl("https://github.com/green9930")}
@@ -80,14 +79,16 @@ const Home = () => {
           </StProfileText>
         </StProfileContent>
       </StProfile>
-      <StContact>
-        <h2>Contact</h2>
-      </StContact>
       {showEmailCopyModal ? (
         <ModalLayout height={250} handleEmailCopyModal={handleEmailCopyModal}>
-          <div>Copied!</div>
+          <StEmailCopyModal>
+            <FaCheck />
+            <h2>email address copied successfully.</h2>
+            <Button onClick={handleEmailCopyModal}>Close</Button>
+          </StEmailCopyModal>
         </ModalLayout>
       ) : null}
+      <Skills />
     </StHome>
   );
 };
@@ -134,22 +135,23 @@ const StTriangle = styled.div`
   transform: translate(20%, 15%);
   z-index: -1;
   opacity: 0.6;
-  border-bottom: ${calcRem(90)} solid ${({ theme }) => theme.gray3};
+  border-bottom: ${calcRem(90)} solid ${({ theme }) => theme.gray4};
   border-top: ${calcRem(90)} solid transparent;
   border-left: ${calcRem(90)} solid transparent;
-  border-right: ${calcRem(90)} solid ${({ theme }) => theme.gray3};
+  border-right: ${calcRem(90)} solid ${({ theme }) => theme.gray4};
 `;
 
 const StProfileText = styled.li`
   h2 {
     color: ${({ theme }) => theme.orange1};
-    font-size: ${calcRem(28)};
+    font-family: "Ubuntu";
+    font-size: ${calcRem(32)};
     font-weight: 400;
   }
 
   h3 {
     font-family: "Poppins";
-    font-size: ${calcRem(22)};
+    font-size: ${calcRem(24)};
     font-weight: 300;
     span {
       color: ${({ theme }) => theme.orange2};
@@ -159,7 +161,7 @@ const StProfileText = styled.li`
   p {
     margin: ${calcRem(24)} 0;
     font-family: "Pretendard-Regular";
-    font-size: ${calcRem(14)};
+    font-size: ${calcRem(16)};
     font-weight: 400;
   }
 `;
@@ -168,10 +170,6 @@ const StProfileContactList = styled.ul`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: ${calcRem(12)};
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-   */
   padding: 0 ${calcRem(16)};
 
   li {
@@ -185,7 +183,7 @@ const StProfileContactList = styled.ul`
 
     span {
       font-family: "Poppins";
-      font-size: ${calcRem(12)};
+      font-size: ${calcRem(14)};
     }
   }
 `;
@@ -193,34 +191,63 @@ const StProfileContactList = styled.ul`
 const StEmailItem = styled.li`
   grid-column-start: 1;
   grid-column-end: 4;
+  display: flex;
+  align-items: center;
   background-color: ${({ theme }) => theme.gray1};
 
-  span {
-    border-bottom: 1px solid ${({ theme }) => theme.white};
+  svg {
+    margin-left: ${calcRem(-4)};
+    :hover,
+    :focus {
+      opacity: 0.7;
+      color: ${({ theme }) => theme.orange1};
+    }
   }
 `;
 
 const StContactItem = styled.li`
-  background-color: ${({ theme }) => `${theme.gray2}`};
+  background-color: ${({ theme }) => `${theme.gray3}`};
   box-shadow: ${calcRem(3)} ${calcRem(3)} ${calcRem(10)} rgba(0, 0, 0, 0.3);
   cursor: pointer;
 
   :hover {
-    background-color: ${({ theme }) => `${theme.gray3}`};
+    background-color: ${({ theme }) => `${theme.gray4}`};
     color: ${({ theme }) => `${theme.orange1}`};
     transition: ease-in 0.2s;
   }
   :focus {
-    background-color: ${({ theme }) => `${theme.gray3}`};
+    background-color: ${({ theme }) => `${theme.gray4}`};
     color: ${({ theme }) => `${theme.orange1}`};
     transition: ease-in 0.2s;
   }
 `;
 
-const StContact = styled.div`
-  padding: 0 ${calcRem(80)};
+const StEmailCopyModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+
+  button {
+    /* flex: 1; */
+  }
+
   h2 {
-    font-size: ${calcRem(28)};
-    font-weight: 300;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    font-family: "Poppins";
+    font-size: ${calcRem(20)};
+    font-weight: 400;
+  }
+
+  svg {
+    width: ${calcRem(36)};
+    height: auto;
+    color: ${({ theme }) => theme.orange2};
   }
 `;

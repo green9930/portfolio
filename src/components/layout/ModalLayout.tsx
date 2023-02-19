@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { ReactEventHandler, useEffect } from "react";
 import styled from "styled-components";
 import { calcRem } from "../../styles/theme";
 
@@ -19,7 +19,8 @@ const ModalLayout: React.FC<IModal> = ({
       position: fixed; 
       top: -${window.scrollY}px;
       overflow-y: scroll;
-      width: 100%;`;
+      width: 100%;
+    `;
 
     return () => {
       const scrollY = document.body.style.top;
@@ -30,7 +31,12 @@ const ModalLayout: React.FC<IModal> = ({
 
   return (
     <StModalLayout onClick={handleEmailCopyModal}>
-      <StModalBody height={height}>{children}</StModalBody>
+      <StModalBody
+        onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+        height={height}
+      >
+        {children}
+      </StModalBody>
     </StModalLayout>
   );
 };
@@ -44,17 +50,26 @@ const StModalLayout = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 99;
 `;
 
 const StModalBody = styled.div<{ height: number }>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  padding: ${calcRem(20)};
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: ${calcRem(300)};
   height: ${({ height }) => calcRem(height)};
-  background-color: ${({ theme }) => theme.gray3};
+  background-color: ${({ theme }) => theme.gray4};
   border-radius: 5px;
   overflow: hidden;
   z-index: 100;

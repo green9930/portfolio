@@ -4,8 +4,8 @@ import { calcRem, darkTheme } from "./theme";
 /* FONT --------------------------------------------------------------------- */
 // font-family: 'Inter', sans-serif;
 // font-family: 'Poppins', sans-serif;
-// font-family: 'Roboto', sans-serif;
 // font-family: 'Ubuntu', sans-serif;
+// font-family: 'Roboto', sans-serif;
 // font-family: 'Pretendard-Regular';
 
 const GlobalStyle = createGlobalStyle`
@@ -23,34 +23,39 @@ const GlobalStyle = createGlobalStyle`
   }
 
   * {
+    box-sizing: border-box;
   }
   
   html, body {
     box-sizing: border-box;
-    margin: 0 auto;
+    background-color: ${({ theme }) => `${theme.white}`}; 
   }
   
   html {
-    background-color: #FFFFFF;
     font-size: 14px;
   }
 
   body {
-    max-width: 1440px;
     min-height: 100vh;
-    background-color: ${({ theme }) => `${theme.bgColor}`}; 
-    color: ${({ theme }) => `${theme.white}`};
     margin: auto;
-    /* padding: 0 ${calcRem(80)}; */
+    color: ${({ theme }) => `${theme.white}`};
   }
 
   h1, h2, h3, h4, h5, h6 {
     margin: 0;
+  }
+  
+  h1 {
     font-family: "Ubuntu";
+  }
+
+  h2, h3, h4, h5, h6 {
+    font-family: "Poppins";
   }
 
   ul, ol, li {
     list-style: none;
+    margin: 0;
     padding: 0;
   }
 

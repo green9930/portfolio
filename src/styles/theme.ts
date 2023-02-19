@@ -3,8 +3,9 @@ import { DefaultTheme } from "styled-components";
 export const darkTheme: DefaultTheme = {
   bgColor: "#242532",
   gray1: "#21232d",
-  gray2: "#313444",
-  gray3: "#3B3E51",
+  gray2: "#292B39",
+  gray3: "#313444",
+  gray4: "#3B3E51",
   white: "#FFFFFF",
   orange1: "#F5A828",
   orange2: "#F7B952",

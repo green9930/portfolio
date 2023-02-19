@@ -36,7 +36,11 @@ const AppLayout: React.FC<IAppLayout> = ({ children }) => {
 
 export default AppLayout;
 
-const StAppLayout = styled.div``;
+const StAppLayout = styled.div`
+  max-width: 1440px;
+  margin: 0 auto;
+  background-color: ${({ theme }) => `${theme.bgColor}`};
+`;
 
 const StNav = styled.nav`
   display: flex;
