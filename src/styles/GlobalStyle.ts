@@ -2,11 +2,11 @@ import { createGlobalStyle } from "styled-components";
 import { calcRem, darkTheme } from "./theme";
 
 /* FONT --------------------------------------------------------------------- */
+// font-family: 'Archivo', sans-serif;
 // font-family: 'Inter', sans-serif;
 // font-family: 'Poppins', sans-serif;
-// font-family: 'Ubuntu', sans-serif;
 // font-family: 'Roboto', sans-serif;
-// font-family: 'Pretendard-Regular';
+// font-family: 'Ubuntu', sans-serif;
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -14,12 +14,6 @@ const GlobalStyle = createGlobalStyle`
       src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
       font-weight: 400;
       font-style: normal;
-  }
-  @font-face {
-    font-family: 'HSGyeoulNoonkott20';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/HSGyeoulNoonkott20.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
   }
 
   * {

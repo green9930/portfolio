@@ -30,6 +30,9 @@ const AppLayout: React.FC<IAppLayout> = ({ children }) => {
         </StUl>
       </StNav>
       {children}
+      <StFooter>
+        <p>Copyright © 2023 https://green9930.github.io/portfolio/</p>
+      </StFooter>
     </StAppLayout>
   );
 };
@@ -62,6 +65,7 @@ const StUl = styled.ul`
 
   li {
     border-bottom: 1px solid transparent;
+    cursor: pointer;
     i {
       font-family: "Ubuntu";
       font-size: ${calcRem(18)};
@@ -75,4 +79,12 @@ const StUl = styled.ul`
       transition: ease-in 0.1s;
     }
   }
+`;
+
+const StFooter = styled.footer`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => `${theme.bgColor}`};
+  padding: ${calcRem(90)} 0 ${calcRem(36)} 0;
 `;

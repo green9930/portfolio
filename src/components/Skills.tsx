@@ -47,12 +47,12 @@ const Skills = () => {
             <span>HTML/CSS</span>
           </StSkillWrapper>
         </li>
-        <li>
+        <StStyledComponentsLi>
           <StSkillWrapper>
             <SiStyledcomponents />
             <span>styled-components</span>
           </StSkillWrapper>
-        </li>
+        </StStyledComponentsLi>
         <li>
           <StSkillWrapper>
             <SiRedux />
@@ -86,9 +86,9 @@ const StSkills = styled.div`
     padding: ${calcRem(40)} 0;
     color: ${({ theme }) => theme.orange1};
     text-align: center;
-    font-family: "Ubuntu";
+    font-family: "Inter";
     font-size: ${calcRem(30)};
-    font-weight: 400;
+    font-weight: 300;
   }
 `;
 
@@ -100,12 +100,12 @@ const StSkillList = styled.ul`
 
   li {
     background-color: ${({ theme }) => theme.gray3};
-    /* border-radius: 50%; */
     box-shadow: ${calcRem(3)} ${calcRem(3)} ${calcRem(10)} rgba(0, 0, 0, 0.3);
     width: ${calcRem(170)};
     height: ${calcRem(170)};
     margin: 0 auto;
     padding: ${calcRem(10)};
+    cursor: default;
   }
 `;
 
@@ -119,7 +119,6 @@ const StSkillWrapper = styled.div`
   height: 100%;
   background-color: inherit;
   border: 1px solid ${({ theme }) => theme.orange2};
-  /* border-radius: 50%; */
 
   svg {
     width: ${calcRem(40)};
@@ -129,7 +128,13 @@ const StSkillWrapper = styled.div`
   span {
     display: inline-block;
     margin-top: ${calcRem(4)};
-    font-size: ${calcRem(16)};
+    font-size: ${calcRem(14)};
+  }
+`;
+
+const StStyledComponentsLi = styled.li`
+  span {
+    font-size: ${calcRem(14)};
   }
 `;
 
