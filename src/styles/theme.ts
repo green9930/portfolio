@@ -6,9 +6,11 @@ export const darkTheme: DefaultTheme = {
   gray2: "#292B39",
   gray3: "#313444",
   gray4: "#3B3E51",
+  gray5: "#525771",
   white: "#FFFFFF",
   orange1: "#F5A828",
   orange2: "#F7B952",
+  orange3: "#F8C774",
 };
 
 // export const theme = darkTheme;

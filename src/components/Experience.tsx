@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { calcRem } from "../styles/theme";
 
@@ -10,12 +9,16 @@ const Experience = () => {
         <StTable>
           <tbody>
             <tr>
-              <td>2022.11 ~ 2023.02</td>
-              <td>아이엠파인</td>
-              <td>R&D center 웹 프론트엔드 개발</td>
+              <StTd>
+                <span>2022.11 ~ 2023.02</span>
+              </StTd>
+              <StTd>아이엠파인</StTd>
+              <StTd>R&D center 웹 프론트엔드 개발</StTd>
             </tr>
             <tr>
-              <td>2022.07 ~ 2023.10</td>
+              <td>
+                <span>2022.07 ~ 2023.10</span>
+              </td>
               <td>스파르타코딩클럽 항해99 8기 수료</td>
             </tr>
           </tbody>
@@ -32,9 +35,10 @@ const Experience = () => {
 export default Experience;
 
 const StExperience = styled.div`
-  height: 300px;
+  height: ${calcRem(300)};
   background-color: ${({ theme }) => theme.gray1};
   position: relative;
+  cursor: default;
 `;
 
 const StExperienceContent = styled.div`
@@ -59,17 +63,28 @@ const StExperienceContent = styled.div`
 `;
 
 const StTable = styled.table`
-  width: 64%;
+  width: 56%;
   margin: 0 auto;
+  border-spacing: 0;
 
   td {
     width: 33%;
-    padding: ${calcRem(12)} ${calcRem(30)};
+    padding: ${calcRem(16)} ${calcRem(20)};
     text-align: center;
     font-family: "Pretendard-Regular";
     font-size: ${calcRem(16)};
-    font-weight: 300;
+    font-weight: 400;
+
+    span {
+      font-family: "Inter";
+      font-size: ${calcRem(14)};
+      font-weight: 300;
+    }
   }
+`;
+
+const StTd = styled.td`
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 `;
 
 const StStyleBox = styled.div`
@@ -77,20 +92,6 @@ const StStyleBox = styled.div`
   position: absolute;
   top: 0;
   right: 0;
-  /* -webkit-animation: glowing 1s ease-in-out infinite alternate;
-  -moz-animation: glowing 1s ease-in-out infinite alternate;
-  animation: glowing 1s ease-in-out infinite alternate;
-
-  @keyframes glowing {
-    from {
-      box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #0ff,
-        0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-    }
-    to {
-      box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
-        0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-    }
-  } */
 `;
 
 const StStyleBox1 = styled.div`

@@ -8,7 +8,7 @@ import Profile from "../assets/images/profile.jpg";
 import ModalLayout from "./layout/ModalLayout";
 import Button from "./elements/Button";
 
-const AboutMe = () => {
+const AboutMe = React.forwardRef(() => {
   const [showEmailCopyModal, setShowEmailCopyModal] = useState(false);
 
   const handleOpenUrl = (url: string) => window.open(url, "_blank");
@@ -27,7 +27,7 @@ const AboutMe = () => {
   };
 
   return (
-    <StAboutMe>
+    <StAboutMe className="aboutme">
       <StProfileContent>
         <StProfileImage>
           <img src={Profile} alt="profile" />
@@ -39,15 +39,18 @@ const AboutMe = () => {
             I'm <span>FrontEnd Developer</span>
           </h3>
           <p>
-            클린 코드를 지향하고, 사용자 관점에서 개발하고자 합니다. <br />
-            동료와 커뮤니케이션을 즐기고 새로운 지식과 문제 해결의 성취감을
-            원동력으로 성장하는 개발자입니다.
+            깔끔한 성격으로 클린 코드를 지향하고 정리를 좋아하는 개발자입니다.
+            <br />
+            사용자를 최우선으로 생각하며, 유저들의 반응을 원동력으로 성장하고
+            있습니다.
           </p>
           <StProfileContactList>
             <StEmailItem>
               <SiGmail />
               <span>geuna0204@gmail.com</span>
-              <FaCopy onClick={() => handleCopy("geuna0204@gmail.com")} />
+              <div>
+                <FaCopy onClick={() => handleCopy("geuna0204@gmail.com")} />
+              </div>
             </StEmailItem>
             <StContactItem
               onClick={() => handleOpenUrl("https://github.com/green9930")}
@@ -85,30 +88,15 @@ const AboutMe = () => {
       ) : null}
     </StAboutMe>
   );
-};
+});
 
 export default AboutMe;
-
-const StHeader1 = styled.h3`
-  font-family: "Archivo";
-`;
-const StHeader2 = styled.h3`
-  font-family: "Inter";
-`;
-const StHeader3 = styled.h3`
-  font-family: "Poppins";
-`;
-const StHeader4 = styled.h3`
-  font-family: "Roboto";
-`;
-const StHeader5 = styled.h3`
-  font-family: "Ubuntu";
-`;
 
 const StAboutMe = styled.div`
   position: relative;
   height: 400px;
   background-color: ${({ theme }) => theme.gray1};
+  cursor: default;
 `;
 
 const StProfileContent = styled.ul`
@@ -203,13 +191,16 @@ const StEmailItem = styled.li`
   display: flex;
   align-items: center;
   background-color: ${({ theme }) => theme.gray1};
+  cursor: pointer;
 
-  svg {
-    margin-left: ${calcRem(-4)};
-    :hover,
-    :focus {
-      opacity: 0.7;
-      color: ${({ theme }) => theme.orange1};
+  div {
+    svg {
+      margin-left: ${calcRem(-4)};
+      :hover,
+      :focus {
+        opacity: 0.7;
+        color: ${({ theme }) => theme.orange1};
+      }
     }
   }
 `;

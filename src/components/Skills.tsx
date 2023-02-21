@@ -81,6 +81,7 @@ export default Skills;
 const StSkills = styled.div`
   height: 600px;
   background-color: ${({ theme }) => theme.gray2};
+  cursor: default;
 
   h2 {
     padding: ${calcRem(40)} 0;
@@ -105,7 +106,6 @@ const StSkillList = styled.ul`
     height: ${calcRem(170)};
     margin: 0 auto;
     padding: ${calcRem(10)};
-    cursor: default;
   }
 `;
 

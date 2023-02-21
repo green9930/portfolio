@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
   
   html, body {
     box-sizing: border-box;
-    background-color: ${({ theme }) => `${theme.white}`}; 
+    background-color: ${({ theme }) => `${theme.bgColor}`}; 
   }
   
   html {
@@ -31,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     min-height: 100vh;
+    max-width: 1440px;
     margin: auto;
     color: ${({ theme }) => `${theme.white}`};
   }
