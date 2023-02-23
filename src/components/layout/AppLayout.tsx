@@ -42,7 +42,7 @@ const AppLayout: React.FC<IAppLayout> = ({ scrollToTarget, children }) => {
 export default AppLayout;
 
 const StAppLayout = styled.div`
-  max-width: 100vw;
+  max-width: 1440px;
   margin: 0 auto;
   background-color: ${({ theme }) => `${theme.bgColor}`};
 `;

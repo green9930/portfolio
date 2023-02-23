@@ -31,7 +31,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     min-height: 100vh;
-    max-width: 1440px;
+    max-width: 100vw;
     margin: auto;
     color: ${({ theme }) => `${theme.white}`};
   }

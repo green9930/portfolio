@@ -1,4 +1,4 @@
-import React, { ReactEventHandler, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { calcRem } from "../../styles/theme";
 
@@ -16,10 +16,11 @@ const ModalLayout: React.FC<IModal> = ({
 }) => {
   useEffect(() => {
     document.body.style.cssText = `
-      position: fixed; 
+      position: fixed;  
       top: -${window.scrollY}px;
-      overflow-y: scroll;
+      left: 50%;
       width: 100%;
+      transform: translateX(-50%);
     `;
 
     return () => {
