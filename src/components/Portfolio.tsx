@@ -7,7 +7,6 @@ import ThumbnailCmw from "../assets/images/resize_thumbnail_cmw.jpg";
 import ThumbnailPwa from "../assets/images/resize_thumbnail_pwa.jpg";
 import ThumbnailSamstagram from "../assets/images/resize_thumbnail_samstagram.jpg";
 
-const DISABLE_MESSAGE = "I'm sorry, this project is in private repository";
 type portfolioListType = {
   title: string;
   skills: string[];
@@ -15,6 +14,9 @@ type portfolioListType = {
   github: string;
   thumbnail: string;
 };
+
+const DISABLE_MESSAGE = "I'm sorry, this project is in private repository";
+
 const PORTFOLIO_LIST: portfolioListType[] = [
   {
     title: "Community Wall",

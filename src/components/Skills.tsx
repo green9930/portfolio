@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import { FaReact } from "react-icons/fa";
 import { RiCodeSSlashLine } from "react-icons/ri";

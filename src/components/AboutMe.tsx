@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { FaCopy, FaCheck } from "react-icons/fa";
 import { SiGmail, SiGithub, SiNotion } from "react-icons/si";
@@ -8,9 +8,8 @@ import Profile from "../assets/images/profile.jpg";
 import ModalLayout from "./layout/ModalLayout";
 import Button from "./elements/Button";
 
-const AboutMe = React.forwardRef(() => {
+const AboutMe = () => {
   const [showEmailCopyModal, setShowEmailCopyModal] = useState(false);
-
   const handleOpenUrl = (url: string) => window.open(url, "_blank");
 
   const handleEmailCopyModal = () => setShowEmailCopyModal(!showEmailCopyModal);
@@ -27,7 +26,7 @@ const AboutMe = React.forwardRef(() => {
   };
 
   return (
-    <StAboutMe className="aboutme">
+    <StAboutMe>
       <StProfileContent>
         <StProfileImage>
           <img src={Profile} alt="profile" />
@@ -88,7 +87,7 @@ const AboutMe = React.forwardRef(() => {
       ) : null}
     </StAboutMe>
   );
-});
+};
 
 export default AboutMe;
 

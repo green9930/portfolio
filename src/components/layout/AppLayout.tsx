@@ -2,27 +2,31 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { SiGithub } from "react-icons/si";
+import { SlArrowUpCircle } from "react-icons/sl";
 import { calcRem } from "../../styles/theme";
+import { TargetType } from "../../pages/HomePage";
 
 interface IAppLayout extends React.HTMLAttributes<HTMLDivElement> {}
 interface IAppLayout {
-  scrollToTarget: (name: string) => void;
+  getTarget: (name: TargetType) => void;
 }
 
-const AppLayout: React.FC<IAppLayout> = ({ scrollToTarget, children }) => {
+const AppLayout: React.FC<IAppLayout> = ({ getTarget, children }) => {
   const navigate = useNavigate();
+
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <StAppLayout>
       <StNav>
         <h1 onClick={() => navigate("/")}>Bae Geuna</h1>
         <StUl>
-          <li onClick={() => scrollToTarget("aboutme")}>About Me</li>
-          <li onClick={() => scrollToTarget("skills")}>Skills</li>
-          <li onClick={() => scrollToTarget("experience")}>
+          <li onClick={() => getTarget("aboutme")}>About Me</li>
+          <li onClick={() => getTarget("skills")}>Skills</li>
+          <li onClick={() => getTarget("experience")}>
             Experience & Education
           </li>
-          <li onClick={() => scrollToTarget("projects")}>Projects</li>
+          <li onClick={() => getTarget("portfolio")}>Portfolio</li>
         </StUl>
       </StNav>
       {children}
@@ -35,6 +39,9 @@ const AppLayout: React.FC<IAppLayout> = ({ scrollToTarget, children }) => {
           <span>green9930</span>
         </div>
       </StFooter>
+      <StScrollToTop onClick={scrollToTop} name="scroll to top">
+        <SlArrowUpCircle />
+      </StScrollToTop>
     </StAppLayout>
   );
 };
@@ -51,7 +58,7 @@ const StNav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${calcRem(20)} ${calcRem(80)};
+  padding: ${calcRem(20)} ${calcRem(60)};
 
   h1 {
     color: ${({ theme }) => `${theme.orange1}`};
@@ -64,16 +71,14 @@ const StNav = styled.nav`
 
 const StUl = styled.ul`
   display: flex;
-  gap: ${calcRem(16)};
+  gap: ${calcRem(20)};
 
   li {
     border-bottom: 1px solid transparent;
     cursor: pointer;
-    i {
-      font-family: "Ubuntu";
-      font-size: ${calcRem(18)};
-      font-weight: 300;
-    }
+    font-family: "Ubuntu";
+    font-size: ${calcRem(18)};
+    font-weight: 300;
 
     :hover,
     :focus {
@@ -101,5 +106,29 @@ const StFooter = styled.footer`
     gap: ${calcRem(4)};
     color: ${({ theme }) => theme.orange3};
     cursor: pointer;
+  }
+`;
+
+const StScrollToTop = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: ${calcRem(80)};
+  height: ${calcRem(80)};
+  position: fixed;
+  bottom: ${calcRem(40)};
+  right: ${calcRem(40)};
+  background-color: ${({ theme }) => theme.gray3};
+  border: none;
+  border-radius: 50%;
+
+  svg {
+    width: 100%;
+    height: auto;
+    color: ${({ theme }) => theme.orange1};
+    transition: all ease-in 0.2s;
+    :hover {
+      color: ${({ theme }) => theme.orange2};
+    }
   }
 `;
