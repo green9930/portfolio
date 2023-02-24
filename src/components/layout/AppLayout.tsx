@@ -5,6 +5,7 @@ import { SiGithub } from "react-icons/si";
 import { SlArrowUpCircle } from "react-icons/sl";
 import { calcRem } from "../../styles/theme";
 import { TargetType } from "../../pages/HomePage";
+import { isDesktop } from "../../config";
 
 interface IAppLayout extends React.HTMLAttributes<HTMLDivElement> {}
 interface IAppLayout {
@@ -21,7 +22,6 @@ const AppLayout: React.FC<IAppLayout> = ({ getTarget, children }) => {
       <StNav>
         <h1 onClick={() => navigate("/")}>Bae Geuna</h1>
         <StUl>
-          <li onClick={() => getTarget("aboutme")}>About Me</li>
           <li onClick={() => getTarget("skills")}>Skills</li>
           <li onClick={() => getTarget("experience")}>
             Experience & Education
@@ -39,9 +39,11 @@ const AppLayout: React.FC<IAppLayout> = ({ getTarget, children }) => {
           <span>green9930</span>
         </div>
       </StFooter>
-      <StScrollToTop onClick={scrollToTop} name="scroll to top">
-        <SlArrowUpCircle />
-      </StScrollToTop>
+      {isDesktop ? (
+        <StScrollToTop onClick={scrollToTop} name="scroll to top">
+          <SlArrowUpCircle />
+        </StScrollToTop>
+      ) : null}
     </StAppLayout>
   );
 };
@@ -52,6 +54,10 @@ const StAppLayout = styled.div`
   max-width: 1440px;
   margin: 0 auto;
   background-color: ${({ theme }) => `${theme.bgColor}`};
+
+  @media screen and (max-width: 1023px) {
+    width: 100vw;
+  }
 `;
 
 const StNav = styled.nav`
@@ -66,6 +72,15 @@ const StNav = styled.nav`
     font-size: ${calcRem(32)};
     font-weight: 700;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 1023px) {
+    /* flex-direction: column; */
+    gap: ${calcRem(8)};
+    padding: ${calcRem(20)} ${calcRem(40)};
+    h1 {
+      font-size: ${calcRem(24)};
+    }
   }
 `;
 
@@ -87,6 +102,12 @@ const StUl = styled.ul`
       transition: ease-in 0.1s;
     }
   }
+
+  @media screen and (max-width: 1023px) {
+    li {
+      font-size: ${calcRem(14)};
+    }
+  }
 `;
 
 const StFooter = styled.footer`
@@ -106,6 +127,11 @@ const StFooter = styled.footer`
     gap: ${calcRem(4)};
     color: ${({ theme }) => theme.orange3};
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 1023px) {
+    height: ${calcRem(160)};
+    padding: ${calcRem(40)} 0 ${calcRem(12)} 0;
   }
 `;
 

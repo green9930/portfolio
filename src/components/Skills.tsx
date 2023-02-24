@@ -90,6 +90,14 @@ const StSkills = styled.div`
     font-size: ${calcRem(30)};
     font-weight: 300;
   }
+
+  @media screen and (max-width: 1023px) {
+    height: 500px;
+    h2 {
+      padding: ${calcRem(30)} 0;
+      font-size: ${calcRem(28)};
+    }
+  }
 `;
 
 const StSkillList = styled.ul`
@@ -105,6 +113,17 @@ const StSkillList = styled.ul`
     height: ${calcRem(170)};
     margin: 0 auto;
     padding: ${calcRem(10)};
+  }
+
+  @media screen and (max-width: 1023px) {
+    /* gap: ${calcRem(10)}; */
+    padding: 0 ${calcRem(50)};
+
+    li {
+      width: ${calcRem(150)};
+      height: ${calcRem(150)};
+      padding: ${calcRem(8)};
+    }
   }
 `;
 
@@ -129,11 +148,24 @@ const StSkillWrapper = styled.div`
     margin-top: ${calcRem(4)};
     font-size: ${calcRem(14)};
   }
+
+  @media screen and (max-width: 1023px) {
+    svg {
+      width: ${calcRem(28)};
+    }
+    span {
+      font-size: ${calcRem(12)};
+    }
+  }
 `;
 
 const StStyledComponentsLi = styled.li`
   span {
     font-size: ${calcRem(14)};
+
+    @media screen and (max-width: 1023px) {
+      font-size: ${calcRem(10)};
+    }
   }
 `;
 
@@ -145,5 +177,8 @@ const StIconWrapper = styled.div`
   svg {
     width: ${calcRem(32)};
     height: auto;
+    @media screen and (max-width: 1023px) {
+      width: ${calcRem(28)};
+    }
   }
 `;

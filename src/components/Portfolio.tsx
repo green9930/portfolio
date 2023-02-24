@@ -61,7 +61,7 @@ const Portfolio = () => {
   return (
     <StPortfolio>
       <h2>Portfolio</h2>
-      <StCardList>
+      <ul>
         {PORTFOLIO_LIST.map((val, idx) => {
           const { title, skills, isPrivate, github, thumbnail } = val;
           const isLeft = idx % 2 === 0;
@@ -116,20 +116,17 @@ const Portfolio = () => {
                   isLeft={isLeft}
                 >
                   <h4>Skills</h4>
-                  <StSkillList
-                    isSelected={title === selectedCard}
-                    isLeft={isLeft}
-                  >
+                  <ul>
                     {skills.map((val) => {
                       return <li key={val}>{val}</li>;
                     })}
-                  </StSkillList>
+                  </ul>
                 </StDetailContainer>
               </StDetail>
             </StCard>
           );
         })}
-      </StCardList>
+      </ul>
     </StPortfolio>
   );
 };
@@ -152,9 +149,16 @@ const StPortfolio = styled.div`
     font-size: ${calcRem(30)};
     font-weight: 300;
   }
-`;
 
-const StCardList = styled.ul``;
+  @media screen and (max-width: 1023px) {
+    padding-bottom: ${calcRem(80)};
+
+    h2 {
+      padding: ${calcRem(30)} 0;
+      font-size: ${calcRem(28)};
+    }
+  }
+`;
 
 const StCard = styled.li`
   display: flex;
@@ -164,6 +168,10 @@ const StCard = styled.li`
   margin-bottom: ${calcRem(12)};
   border: 1px solid transparent;
   cursor: default;
+
+  @media screen and (max-width: 1023px) {
+    width: ${calcRem(380)};
+  }
 `;
 
 const StCardContent = styled.div<{ isLeft: boolean }>`
@@ -173,6 +181,10 @@ const StCardContent = styled.div<{ isLeft: boolean }>`
   left: ${({ isLeft }) => (isLeft ? "-75%" : "-25%")};
   transform: translate(50%, -50%);
   z-index: 11;
+
+  @media screen and (max-width: 1023px) {
+    top: 70%;
+  }
 `;
 
 const StCardText = styled.div<{ isLeft: boolean; isPrivate: boolean }>`
@@ -208,7 +220,6 @@ const StCardText = styled.div<{ isLeft: boolean; isPrivate: boolean }>`
       return (
         !isPrivate &&
         css`
-          :focus,
           :hover {
             color: ${({ theme }) => theme.orange2};
             transition: ease-in 0.1s;
@@ -216,6 +227,17 @@ const StCardText = styled.div<{ isLeft: boolean; isPrivate: boolean }>`
         `
       );
     }}
+  }
+
+  @media screen and (max-width: 1023px) {
+    h3 {
+      margin-bottom: 0;
+      font-size: ${calcRem(24)};
+    }
+    span {
+      gap: ${calcRem(6)};
+      font-size: ${calcRem(12)};
+    }
   }
 `;
 
@@ -235,12 +257,17 @@ const StDetailBtn = styled.button`
     color: ${({ theme }) => theme.orange2};
     transition: ease-in 0.1s;
   }
+
+  @media screen and (max-width: 1023px) {
+    padding: ${calcRem(6)} ${calcRem(8)};
+    font-size: ${calcRem(10)};
+  }
 `;
 
 const StCardBackground = styled.div<{ isLeft: boolean }>`
   position: relative;
-  width: ${calcRem(720)};
-  height: ${calcRem(400)};
+  width: ${calcRem(720)}; // 9
+  height: ${calcRem(400)}; // 5
 
   img {
     width: auto;
@@ -249,6 +276,11 @@ const StCardBackground = styled.div<{ isLeft: boolean }>`
     position: absolute;
     top: 0;
     left: 0;
+  }
+
+  @media screen and (max-width: 1023px) {
+    width: ${calcRem(450)};
+    height: ${calcRem(250)};
   }
 `;
 
@@ -259,6 +291,10 @@ const StDivRight = styled.div`
   position: absolute;
   top: 0;
   right: -${calcRem(300)};
+
+  @media screen and (max-width: 1023px) {
+    right: -${calcRem(120)};
+  }
 `;
 
 const StDiv1 = styled.div`
@@ -266,12 +302,24 @@ const StDiv1 = styled.div`
   border-right: ${calcRem(300)} solid ${({ theme }) => theme.gray5};
   border-bottom: 0 solid ${({ theme }) => theme.gray5};
   border-left: 0 solid transparent;
+
+  @media screen and (max-width: 1023px) {
+    border-top: ${calcRem(250)} solid transparent;
+    border-right: ${calcRem(250)} solid ${({ theme }) => theme.gray5};
+    border-bottom: 0 solid ${({ theme }) => theme.gray5};
+    border-left: 0 solid transparent;
+  }
 `;
 
 const StDiv2 = styled.div`
   width: ${calcRem(200)};
   height: ${calcRem(400)};
   background-color: ${({ theme }) => theme.gray5};
+
+  @media screen and (max-width: 1023px) {
+    width: ${calcRem(120)};
+    height: ${calcRem(250)};
+  }
 `;
 
 const StDivLeft = styled.div`
@@ -281,12 +329,21 @@ const StDivLeft = styled.div`
   position: absolute;
   top: 0;
   left: -${calcRem(200)};
+
+  @media screen and (max-width: 1023px) {
+    left: -${calcRem(120)};
+  }
 `;
 
 const StDiv3 = styled.div`
   width: ${calcRem(200)};
   height: ${calcRem(400)};
   background-color: ${({ theme }) => theme.gray5};
+
+  @media screen and (max-width: 1023px) {
+    width: ${calcRem(120)};
+    height: ${calcRem(250)};
+  }
 `;
 
 const StDiv4 = styled.div`
@@ -294,6 +351,13 @@ const StDiv4 = styled.div`
   border-left: ${calcRem(300)} solid ${({ theme }) => theme.gray5};
   border-bottom: 0 solid ${({ theme }) => theme.gray5};
   border-right: 0 solid transparent;
+
+  @media screen and (max-width: 1023px) {
+    border-top: ${calcRem(250)} solid transparent;
+    border-left: ${calcRem(250)} solid ${({ theme }) => theme.gray5};
+    border-bottom: 0 solid ${({ theme }) => theme.gray5};
+    border-right: 0 solid transparent;
+  }
 `;
 
 const StDetail = styled.div<{ isSelected: boolean; isLeft: boolean }>`
@@ -302,6 +366,10 @@ const StDetail = styled.div<{ isSelected: boolean; isLeft: boolean }>`
       ? css`
           width: calc(100% + ${calcRem(200)} + 2px);
           border: 1px solid ${({ theme }) => theme.orange2};
+
+          @media screen and (max-width: 1023px) {
+            width: calc(100% + ${calcRem(120)} - 2px);
+          }
         `
       : css`
           width: 0;
@@ -311,24 +379,25 @@ const StDetail = styled.div<{ isSelected: boolean; isLeft: boolean }>`
   height: 100%;
   position: absolute;
   top: 0;
+
   ${({ isLeft }) => {
     return isLeft
       ? css`
           left: calc(-${calcRem(200)} + 1px);
+
+          @media screen and (max-width: 1023px) {
+            left: calc(-${calcRem(120)});
+          }
         `
       : css`
           right: calc(-${calcRem(200)} - 2px);
+
+          @media screen and (max-width: 1023px) {
+            right: calc(-${calcRem(120)} + 5px);
+          }
         `;
   }};
   transition: all ease-in 0.3s;
-`;
-
-const StSkillList = styled.ul<{ isSelected: boolean; isLeft: boolean }>`
-  text-align: center;
-
-  li {
-    margin-bottom: ${calcRem(4)};
-  }
 `;
 
 const StBackground = styled.div<{ isSelected: boolean }>`
@@ -362,5 +431,24 @@ const StDetailContainer = styled.div<{ isSelected: boolean; isLeft: boolean }>`
     font-family: "Inter";
     font-size: ${calcRem(18)};
     font-weight: 300;
+  }
+
+  ul {
+    li {
+      margin-bottom: ${calcRem(4)};
+      font-size: ${calcRem(14)};
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    h4 {
+      font-size: ${calcRem(16)};
+      margin-bottom: ${calcRem(8)};
+    }
+    ul {
+      li {
+        font-size: ${calcRem(12)};
+      }
+    }
   }
 `;

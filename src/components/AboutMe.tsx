@@ -7,6 +7,7 @@ import { calcRem } from "../styles/theme";
 import Profile from "../assets/images/profile.jpg";
 import ModalLayout from "./layout/ModalLayout";
 import Button from "./elements/Button";
+// import { isDesktop } from "../config";
 
 const AboutMe = () => {
   const [showEmailCopyModal, setShowEmailCopyModal] = useState(false);
@@ -28,10 +29,12 @@ const AboutMe = () => {
   return (
     <StAboutMe>
       <StProfileContent>
+        {/* {isDesktop ? ( */}
         <StProfileImage>
           <img src={Profile} alt="profile" />
           <StTriangle></StTriangle>
         </StProfileImage>
+        {/* ) : null} */}
         <StProfileText>
           <h2>Bae Geuna</h2>
           <h3>
@@ -96,6 +99,10 @@ const StAboutMe = styled.div`
   height: 400px;
   background-color: ${({ theme }) => theme.gray1};
   cursor: default;
+
+  @media screen and (max-width: 1023px) {
+    height: 300px;
+  }
 `;
 
 const StProfileContent = styled.ul`
@@ -108,6 +115,10 @@ const StProfileContent = styled.ul`
   top: ${calcRem(20)};
   right: 0;
   z-index: 9;
+
+  @media screen and (max-width: 1023px) {
+    /* flex-direction: column; */
+  }
 `;
 
 const StProfileImage = styled.li`
@@ -122,6 +133,10 @@ const StProfileImage = styled.li`
     width: 100%;
     height: auto;
   }
+
+  @media screen and (max-width: 1023px) {
+    width: ${calcRem(180)};
+  }
 `;
 
 const StTriangle = styled.div`
@@ -135,6 +150,14 @@ const StTriangle = styled.div`
   border-right: ${calcRem(90)} solid ${({ theme }) => theme.gray4};
   border-bottom: ${calcRem(90)} solid ${({ theme }) => theme.gray4};
   border-left: ${calcRem(90)} solid transparent;
+
+  @media screen and (max-width: 1023px) {
+    transform: translate(16%, 12%);
+    border-top: ${calcRem(80)} solid transparent;
+    border-right: ${calcRem(80)} solid ${({ theme }) => theme.gray4};
+    border-bottom: ${calcRem(80)} solid ${({ theme }) => theme.gray4};
+    border-left: ${calcRem(80)} solid transparent;
+  }
 `;
 
 const StProfileText = styled.li`
@@ -160,6 +183,19 @@ const StProfileText = styled.li`
     font-size: ${calcRem(16)};
     font-weight: 400;
   }
+
+  @media screen and (max-width: 1023px) {
+    h2 {
+      font-size: ${calcRem(28)};
+    }
+    h3 {
+      font-size: ${calcRem(20)};
+    }
+    p {
+      margin: ${calcRem(16)} 0;
+      font-size: ${calcRem(14)};
+    }
+  }
 `;
 
 const StProfileContactList = styled.ul`
@@ -180,6 +216,16 @@ const StProfileContactList = styled.ul`
     span {
       font-family: "Poppins";
       font-size: ${calcRem(14)};
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    gap: ${calcRem(10)};
+    li {
+      padding: ${calcRem(10)};
+      span {
+        font-size: ${calcRem(12)};
+      }
     }
   }
 `;

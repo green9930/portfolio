@@ -39,6 +39,10 @@ const StExperience = styled.div`
   background-color: ${({ theme }) => theme.gray1};
   position: relative;
   cursor: default;
+
+  @media screen and (max-width: 1023px) {
+    height: ${calcRem(220)};
+  }
 `;
 
 const StExperienceContent = styled.div`
@@ -59,6 +63,13 @@ const StExperienceContent = styled.div`
     font-family: "Inter";
     font-size: ${calcRem(30)};
     font-weight: 300;
+  }
+
+  @media screen and (max-width: 1023px) {
+    h2 {
+      padding: ${calcRem(30)} 0;
+      font-size: ${calcRem(28)};
+    }
   }
 `;
 
@@ -81,6 +92,17 @@ const StTable = styled.table`
       font-weight: 300;
     }
   }
+
+  @media screen and (max-width: 1023px) {
+    width: 80%;
+    td {
+      padding: ${calcRem(8)} ${calcRem(12)};
+      font-size: ${calcRem(14)};
+      span {
+        font-size: ${calcRem(12)};
+      }
+    }
+  }
 `;
 
 const StTd = styled.td`
@@ -99,10 +121,20 @@ const StStyleBox1 = styled.div`
   border-right: ${calcRem(300)} solid ${({ theme }) => theme.gray3};
   border-bottom: 0 solid ${({ theme }) => theme.gray3};
   border-left: 0 solid transparent;
+
+  @media screen and (max-width: 1023px) {
+    border-top: ${calcRem(220)} solid transparent;
+    border-right: ${calcRem(220)} solid ${({ theme }) => theme.gray3};
+  }
 `;
 
 const StStyleBox2 = styled.div`
   width: ${calcRem(300)};
   height: ${calcRem(300)};
-  background-color: ${({ theme }) => theme.gray3}; ;
+  background-color: ${({ theme }) => theme.gray3};
+
+  @media screen and (max-width: 1023px) {
+    width: ${calcRem(220)};
+    height: ${calcRem(220)};
+  }
 `;
