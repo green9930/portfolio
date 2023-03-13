@@ -4,8 +4,9 @@ import { SiGithub } from "react-icons/si";
 import { calcRem } from "../styles/theme";
 import ThumbnailChackCheck from "../assets/images/resize_thumbnail_chackcheck.png";
 import ThumbnailCmw from "../assets/images/resize_thumbnail_cmw.jpg";
-import ThumbnailPwa from "../assets/images/resize_thumbnail_pwa.jpg";
+import ThumbnailDasseum from "../assets/images/resize_thumbnail_dasseum.png";
 import ThumbnailSamstagram from "../assets/images/resize_thumbnail_samstagram.jpg";
+import ThumbnailPortfolio from "../assets/images/resize_thumbnail_portfolio.png";
 
 type portfolioListType = {
   title: string;
@@ -19,18 +20,11 @@ const DISABLE_MESSAGE = "I'm sorry, this project is in private repository";
 
 const PORTFOLIO_LIST: portfolioListType[] = [
   {
-    title: "Community Wall",
-    skills: ["React", "TypeScript", "redux-toolkit", "microsoft/signalr"],
-    isPrivate: true,
-    github: DISABLE_MESSAGE,
-    thumbnail: ThumbnailCmw,
-  },
-  {
-    title: "A2HS",
-    skills: ["React", "TypeScript", "redux-toolkit", "microsoft/signalr"],
-    isPrivate: true,
-    github: DISABLE_MESSAGE,
-    thumbnail: ThumbnailPwa,
+    title: "DaSseum",
+    skills: ["React", "TypeScript", "redux-toolkit", "firebase"],
+    isPrivate: false,
+    github: "https://github.com/green9930/mdiary",
+    thumbnail: ThumbnailDasseum,
   },
   {
     title: "CHACKCHECK",
@@ -51,7 +45,7 @@ const PORTFOLIO_LIST: portfolioListType[] = [
     skills: ["React", "TypeScript", "styled-components", "gh-pages"],
     isPrivate: false,
     github: "https://github.com/green9930/portfolio",
-    thumbnail: ThumbnailPwa,
+    thumbnail: ThumbnailPortfolio,
   },
 ];
 

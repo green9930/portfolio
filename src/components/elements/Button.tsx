@@ -31,11 +31,7 @@ const StButton = styled.button`
   span {
   }
 
-  :hover {
-    background-color: ${({ theme }) => `${theme.gray4}`};
-    color: ${({ theme }) => `${theme.orange1}`};
-    transition: ease-in 0.2s;
-  }
+  :hover,
   :focus {
     background-color: ${({ theme }) => `${theme.gray4}`};
     color: ${({ theme }) => `${theme.orange1}`};
